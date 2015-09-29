@@ -1,6 +1,10 @@
-__author__ = 'Josh'
 
-def alphabet_sort(*strings):
-    """Define a function, alphabet_sort, that takes an arbitrary number of strings and sorts them alphabetically.
-    you can assume all strings are lowercased."""
-    return None
+
+def shortest_len(*strings):
+    """Define a function, shortest_len, that takes an arbitrary number of strings and returns the shortest length a string has within
+    the arguments. >>> shortest_len("here", "there", "gone", "hfhfhfhfhf")
+    4"""
+    pass
+
+
+
