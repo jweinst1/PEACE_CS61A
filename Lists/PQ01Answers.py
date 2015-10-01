@@ -15,3 +15,24 @@ def prime_range(n):
                 return False
         return True
     return [elem for elem in range(n) if is_prime(elem)]
+
+def parse_str(lst):
+    #Define a function, parse_str, that takes a lst of integers, and returns a list of the corresponding strings to those
+    #integers.
+    return [str(elem) for elem in lst if type(elem) == int]
+
+def partition_to_lst(lst):
+    #Define a function, partition_to_lst that takes a list and returns a list of lists where
+    #Where each element in the original list is inside a new list.
+    #NOTE: elements in lst should not be split up, such as strings. The list() function might not work
+    #exactly how you want it to.
+    return [[elem] for elem in lst]
+
+def str_to_lst(string):
+    #Define a function, str_to_lst, that takes a string and returns a list of each individual character in the string.
+    #You cannot use the list() function here.
+    size = len(string)-1
+    newlist = []
+    for i in range(size):
+        newlist.append(string[i])
+    return newlist
