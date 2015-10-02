@@ -50,6 +50,27 @@ def str_to_int(string):
     #Define a function, repeat_str, that takes a string and returns the corresponding integer. You cannot use int().
     #Pay careful attention for errors, such as the possiblity of "070", which does not evaluate to an integer,
     #You must include support for negative numbers as well.
+    def converter(elem):
+        if elem == '0':
+            return 0
+        elif elem == '1':
+            return 1
+        elif elem == '2':
+            return 2
+        elif elem == '3':
+            return 3
+        elif elem == '4':
+            return 4
+        elif elem == '5':
+            return 5
+        elif elem == '6':
+            return 6
+        elif elem == '7':
+            return 7
+        elif elem == '8':
+            return 8
+        elif elem == '9':
+            return 9
     numbers = [str(x) for x in range(10)]
     total_symbols = numbers + ['-']
     for elem in string:
@@ -57,6 +78,7 @@ def str_to_int(string):
             raise ValueError("invalid literal")
     negative = False
     i = 0
+    integer = 0
     while i < len(string)-1:
         if i == 0:
             if string[i] == '0':
@@ -65,5 +87,13 @@ def str_to_int(string):
                 negative = True
                 i += 1
             else:
-                pass
+                integer += converter(string[i])
+                i += 1
+        else:
+            if string[i] == '-':
+                raise ValueError("invalid literal")
+            else:
+                integer += (converter(string[i])*(i*10))
+                i += 1
+    return integer
 
