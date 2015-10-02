@@ -29,5 +29,12 @@ def repeat_str(char, i):
     #'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
     pass
 
+"""Challenge Problem"""
+def str_to_int(string):
+    #Define a function, repeat_str, that takes a string and returns the corresponding integer. You cannot use int().
+    #Pay careful attention for errors, such as the possiblity of "070", which does not evaluate to an integer,
+    #You must include support for negative numbers as well.
+    pass
+
 
 

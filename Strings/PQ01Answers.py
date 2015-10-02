@@ -45,3 +45,25 @@ def repeat_str(char, i):
         count += 1
     return new
 
+"""Challenge Problem"""
+def str_to_int(string):
+    #Define a function, repeat_str, that takes a string and returns the corresponding integer. You cannot use int().
+    #Pay careful attention for errors, such as the possiblity of "070", which does not evaluate to an integer,
+    #You must include support for negative numbers as well.
+    numbers = [str(x) for x in range(10)]
+    total_symbols = numbers + ['-']
+    for elem in string:
+        if elem not in total_symbols:
+            raise ValueError("invalid literal")
+    negative = False
+    i = 0
+    while i < len(string)-1:
+        if i == 0:
+            if string[i] == '0':
+                raise ValueError("invalid literal")
+            elif string[i] == '-':
+                negative = True
+                i += 1
+            else:
+                pass
+
