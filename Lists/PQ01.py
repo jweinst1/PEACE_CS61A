@@ -38,3 +38,8 @@ def str_to_lst(string):
     #>>> str_to_lst("Do not overdose on billaldehyde.")
     #['D', 'o', ' ', 'n', 'o', 't', ' ', 'o', 'v', 'e', 'r', 'd', 'o', 's', 'e', ' ', 'o', 'n', ' ', 'b', 'i', 'l', 'l', 'a', 'l', 'd', 'e', 'h', 'y', 'd', 'e']
     pass
+
+def addition_pairs(n):
+    #Define a function, addition_pairs, that returns a tuple of lists, where the two integers in each tuple add up to n.
+    #Your list must contain all possible n-permutations, meanign the order does matter between numbers.
+    pass

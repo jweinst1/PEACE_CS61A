@@ -36,3 +36,8 @@ def str_to_lst(string):
     for i in range(size):
         newlist.append(string[i])
     return newlist
+
+def addition_pairs(n):
+    #Define a function, addition_pairs, that returns a tuple of lists, where the two integers in each tuple add up to n.
+    #Your list must contain all possible n-permutations, meanign the order does matter between numbers.
+    return [(x, y) for x in range(n) for y in range(n) if x + y == n]

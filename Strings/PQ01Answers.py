@@ -45,6 +45,17 @@ def repeat_str(char, i):
         count += 1
     return new
 
+def delete_char(string, i):
+    #Define a function, delete_char, that takes a string, and deletes the character at a specific index in the string.
+    #Your function must raise an IndexError if the specified index is out of range.
+    if i > len(string)-1:
+        raise IndexError("I is out of the string's index")
+    else:
+        before, after = i-1, i
+        slice1, slice2 = string[:before], string[after:]
+        result = slice1 + slice2
+        return result
+
 """Challenge Problem"""
 def str_to_int(string):
     #Define a function, repeat_str, that takes a string and returns the corresponding integer. You cannot use int().

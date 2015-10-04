@@ -29,11 +29,18 @@ def repeat_str(char, i):
     #'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
     pass
 
+def delete_char(string, i):
+    #Define a function, delete_char, that takes a string, and deletes the character at a specific index in the string.
+    #Your function must raise an IndexError if the specified index is out of range.
+    pass
+
 """Challenge Problem"""
 def str_to_int(string):
     #Define a function, repeat_str, that takes a string and returns the corresponding integer. You cannot use int().
     #Pay careful attention for errors, such as the possiblity of "070", which does not evaluate to an integer,
+    #Any string with non-int characters should immedeatly raise a ValueError.
     #You must include support for negative numbers as well.
+    #This problem is meant to make you think creatively, don't worry about the number of lines it takes.
     pass
 
 
