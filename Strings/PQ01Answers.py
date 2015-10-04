@@ -73,27 +73,36 @@ def str_to_int(string):
             return 9
     numbers = [str(x) for x in range(10)]
     total_symbols = numbers + ['-']
-    for elem in string:
+    for elem in string: #will not proceed if the string contains non int elements
         if elem not in total_symbols:
             raise ValueError("invalid literal")
     negative = False
-    i = 0
+    i = len(string)-1
     integer = 0
-    while i < len(string)-1:
+    place_hold_count = 1
+    while 0 <= i:
         if i == 0:
             if string[i] == '0':
                 raise ValueError("invalid literal")
             elif string[i] == '-':
                 negative = True
-                i += 1
+                i -= 1
             else:
-                integer += converter(string[i])
-                i += 1
+                integer += (converter(string[i])*place_hold_count)
+                i -= 1
+        elif i == len(string)-1:
+            integer += converter(string[i])
+            i -= 1
+            place_hold_count *= 10
         else:
             if string[i] == '-':
                 raise ValueError("invalid literal")
             else:
-                integer += (converter(string[i])*(i*10))
-                i += 1
+                integer += (converter(string[i])*place_hold_count)
+                i -= 1
+                place_hold_count *= 10
+    if negative == True:
+        integer -= (2*integer)
+        return integer
     return integer
 
