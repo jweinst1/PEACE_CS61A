@@ -113,3 +113,52 @@ Now, continuing, lets see what happens to the oski GPA cap when we reassign it w
 >>> bear.GPA_cap
 3.0
 ```
+
+From this, we can see that changing the class attribute on the class name, changes the class attribute for all instances of an object. Therefore,
+
+> If an object has an instance attribute by the same name of the class attribute, you can only access the instance attribute through that object. Changing the class attribute by reassignment changes the class attribute for all instances of the class which do not have an instance attribute by the same name.
+
+You might be wondering at this point, how does a class store its attributes. Each class also has a `__dict__` container!
+
+```
+>>> sample.__dict__
+mappingproxy({'__doc__': None, '__weakref__': <attribute '__weakref__' of 'sample' objects>, '__module__': 'Classes.Tutorial', '__dict__': <attribute '__dict__' of 'sample' objects>, 'GPA_cap': 3.0})
+```
+
+Although the `__dict__` container for classes is more complicated, you can clearly see the gpa cap attribute at the end of the mappingproxy.
+
+###Methods
+
+####The init method
+
+So, we have learned about class attributes and instances attributes. However, what if we wanted to, upon creating an instance of a class, give it some preset instance attributes, without doing `object.__dict__[name] = value`? We can give our class called a function, called `__init__`, that gives an object those predefined instance attributes were looking for.
+
+```
+class student:
+
+    def __init__(self, GPA, professor):
+        self.GPA = GPA
+        self.professor = professor
+        
+        
+>>> tom = student(3.1, 'Hug')
+>>> tom.GPA
+3.1
+>>> tom.professor
+'Hug'
+>>> tom.__dict__
+{'GPA': 3.1, 'professor': 'Hug'}
+>>> student.__dict__
+mappingproxy({'__weakref__': <attribute '__weakref__' of 'student' objects>, '__init__': <function student.__init__ at 0x1030aba60>, '__doc__': None, '__dict__': <attribute '__dict__' of 'student' objects>, '__module__': 'Classes.Tutorial'})
+```
+
+Here, we created a new class called student, and gave him an init function, which assigns two key:value pairs to the `__dict__` container of the object. Essentially, the init function is equivalent to this set of arguments:
+
+```
+tom.__dict__['GPA'] = 3.1
+tom.__dict__['professor'] = 'Hug'
+```
+
+#####The Self statement
+
+The `self` word in python refers to the instance of the class that the classes method is being called on. Because classes can have many, many instances active at a single amount of time, the self keyword acts a distinction between what instance the method is called in.
