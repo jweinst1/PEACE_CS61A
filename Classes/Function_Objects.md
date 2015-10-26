@@ -17,4 +17,12 @@ However, the exec() function in Python 3 can be used to create multiline functio
 >>> add_3(9)
 12
 ```
-Let's say we want a more complex function to be built from this technique, one that has many lines of calls. This technique can be packaged into a function that takes a name, parameters, and a list of strings for commands, that returns the function object:
+You can also have a user defined function return a function object, and bind a variable to that call:
+```
+def fobj():
+    exec('def x(y):\n\treturn y')
+    return locals()['x']
+>>> g = fobj()
+>>>g(8)
+8
+```
