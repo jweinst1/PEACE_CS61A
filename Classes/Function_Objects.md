@@ -1,6 +1,8 @@
 #Creating Function and Class Objects in Python
 
-Normally, when one wants to write a function or a class, we see examples like the following:
+###Function Objects
+
+Normally, when one wants to write a function or a class, it has to be written it into a py file. We see examples like the following:
 ```
 def row(x):
     x += 4
@@ -39,3 +41,40 @@ def make_function(name, parameter, commands):
 >>> func(8)
 16
 ```
+
+###Class Objects
+
+The `exec()` command can also be used to create class objects without writing them implicitly in a py file or into the interpreter. This can be done by stringing together a simple class definition:
+```
+def class_object():
+    exec('class one: pass')
+    return locals()['one']
+>>> f = class_object()
+>>> f
+<class 'one'>
+>>> obj = f()
+>>> obj
+<one object at 0x103680198>
+>>> obj.__dict__
+{}
+```
+This technique gives us access to the creation of empty class objects, but more importantly empty object instances. In Python, one usually has to create classes with specific `__init__()` methods and others to properly assemble and call instances of those classes. However, we can essentially do the same in a much simpler way, by using a `__dict__` attribute of an empty object instance and adding attributes to it from two lists. One of the lists must be a list of strings for names:
+```
+def create_object(names, values):
+    assert len(names) == len(values)
+    exec('class one: pass')
+    obj = locals()['one']()
+    for i in range(len(names)):
+        obj.__dict__[names[i]] = values[i]
+    return obj
+
+>>> func = make_function('help', 'pay', ['pay+=2', 'pay*=5', 'credit = pay//3', 'return credit'])
+>>> test_obj = create_object(['help', 'interest', 'message'], [func, 0.5, 'please pay by thursday.'])
+>>> test_obj.help(7)
+15
+>>> test_obj.interest
+0.5
+>>> test_obj.message
+'please pay by thursday.'
+```
+The previous function creator can also be used here to create methods for our object instance, as demonstrated. We must assert the lengths of both lists are equal as every entry in `__dict__` must have a name and value. This technique is particularly useful since it allows the usage of an object instance as a form of data structure, further extending the usage of the key-value system.
