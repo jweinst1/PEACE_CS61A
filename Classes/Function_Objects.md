@@ -26,3 +26,16 @@ def fobj():
 >>>g(8)
 8
 ```
+Let's say you want to create a more complex function though, with several lines of calls. This can be constructed using a list of strings that represent each command, with a format string. The list of commands can be looped through and concatenated, which will then be executed and return from the `locals()` dictionary.
+```
+def make_function(name, parameter, commands):
+    func = 'def {name}({parameter}):'.format(name=name, parameter=parameter)
+    for line in commands:
+        func += '\n\t' + line
+    exec(func)
+    return locals()[name]
+
+>>> func = make_function('help', 'pay', ['pay+=2', 'pay*=5', 'credit = pay//3', 'return credit'])
+>>> func(8)
+16
+```
